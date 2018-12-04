@@ -8,6 +8,14 @@ import {
 } from "react-native";
 
 class HomeScreen extends Component {
+  state = {
+    counter: 0
+  };
+  handleCounter = () => {
+    this.setState({
+      counter: this.state.counter + 1
+    });
+  };
   render() {
     return (
       <ImageBackground
@@ -40,14 +48,18 @@ class HomeScreen extends Component {
         >
           <Image source={require("../../assets/LogoDev.png")} />
         </View>
-        <TouchableWithoutFeedback
-          style={{
-            background: "white",
-            paddingBottom: 16,
-            paddingTop: 16
-          }}
-        >
-          <Text>COMEÇAR</Text>
+        <TouchableWithoutFeedback onPress={this.handleCounter}>
+          <View
+            style={{
+              backgroundColor: "white",
+              paddingBottom: 16,
+              paddingTop: 16
+            }}
+          >
+            <Text style={{ textAlign: "center", fontSize: 18 }}>
+              COMEÇAR! {this.state.counter}
+            </Text>
+          </View>
         </TouchableWithoutFeedback>
       </ImageBackground>
     );
